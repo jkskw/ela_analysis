@@ -16,7 +16,7 @@
 ---
 
 ## Research Questions
-1. **Impact of university location** on graduates' salaries and employment — do regional differences and university prestige matter for career outcomes?
+1. **Impact of university location** on graduates' salaries and employment — regional differences and university prestige matter for career outcomes?
 2. **Work experience during studies** — how does it affect salaries and time to find the first job?
 3. **Potential earnings vs. choice of field of study** — do expected salaries influence students' decisions when choosing their major?
 4. **Level of education (Bachelor’s, Master’s, or long-cycle Master's programs)** — does it affect future salaries?
