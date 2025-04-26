@@ -1,84 +1,106 @@
-## Pytania
-1. Wpływ lokalizacji uczelni na zarobki i
-zatrudnienie absolwentów, badając, czy różnice regionalne oraz prestiż uczelni mają znaczenie dla kariery
-zawodowej
+# Project: Analysis of Factors Influencing Graduates' Salaries and Employment
 
-2. Jak zdobyte podczas studiów
-doświadczenie zawodowe wpływa na wynagrodzenia i czas znalezienia pracy
+## Table of Contents
+- [Research Questions](#research-questions)
+- [Model](#model)
+- [Charts](#charts)
+  - [Jupyter_1. Salaries and Unemployment by Region](#1-salaries-and-unemployment-by-region)
+  - [Jupyter_2. Work Experience and its Impact on Employment and Salaries](#2-work-experience-and-its-impact-on-employment-and-salaries)
+  - [Jupyter_3. Histogram: Number of Students vs Salaries (done in different notebook)](#3-histogram-number-of-students-vs-salaries-done-in-different-notebook)
+  - [Jupyter_4. Education Level vs Salaries](#4-education-level-vs-salaries)
+  - [Jupyter_5. Study Mode vs Salaries](#5-study-mode-vs-salaries)
+- [Additional Charts](#additional-charts)
+  - [1. Changes in Salaries and Unemployment over Time (up to 5 years after graduation)](#1-changes-in-salaries-and-unemployment-over-time-up-to-5-years-after-graduation)
+- [Poster](#poster)
 
-3. Czy potencjalne zarobki wpływają na wybór kierunku studiów przez studentów
+---
 
-4. Czy poziom studiów (I vs II i JM) wpływa na przyszłe zarobki
+## Research Questions
+1. **Impact of university location** on graduates' salaries and employment — do regional differences and university prestige matter for career outcomes?
+2. **Work experience during studies** — how does it affect salaries and time to find the first job?
+3. **Potential earnings vs. choice of field of study** — do expected salaries influence students' decisions when choosing their major?
+4. **Level of education (Bachelor’s, Master’s, or long-cycle Master's programs)** — does it affect future salaries?
+5. **Study mode (full-time vs part-time studies)** — does it impact future salaries?
 
-5. Czy  forma studiów (studia dzienne vs zaoczne)
-wpływa na przyszłe zarobki
+---
 
 ## Model
-W ramach projektu zostanie utworzony model, który posłuży do prognozowania przyszłych zarobków
-absolwentów na podstawie wybranej dziedziny kształcenia studiów (domyślnie informatyka). 
+A predictive model will be developed to forecast future salaries of graduates based on their chosen field of study. Created and finetuned in **models/** directory.
 
-## Wykresy
+---
 
-1. **f(P_WOJ) = (P_ME_ZAR lub P_WWZ)  i P_WWB**
+## Charts
 
-    **P_WOJ** - Województwo lokalizacji jednostki dydaktycznej = P_ME_ZAR i P_WWB
+### 1. Salaries and Unemployment by Region
+- **f(P_WOJ) = (P_ME_ZAR or P_WWZ) and P_WWB**
 
-    **P_ME_ZAR** - Mediana średnich miesięcznych wynagrodzeń absolwentów ze wszystkich źródeł po uzyskaniu dyplomu
+**Definitions:**
+- `P_WOJ` — Region (province) of the educational institution
+- `P_ME_ZAR` — Median of graduates' monthly salaries from all sources after graduation
+- `P_WWZ` — Relative Salary Index of graduates after graduation
+- `P_WWB` — Relative Unemployment Index of graduates after graduation
 
-    **P_WWZ** - Względny Wskaźnik Zarobków absolwentów po uzyskaniu dyplomu
-    
-    **P_WWB** - Względny Wskaźnik Bezrobocia absolwentów po uzyskaniu dyplomu
+---
 
-2. **f() = ?**
+### 2. Work Experience and its Impact on Employment and Salaries
+- **f() = ?**
 
-    **P_WWB_DOSW** - Względny Wskaźnik Bezrobocia absolwentów po uzyskaniu dyplomu wśród absolwentów z doświadczeniem pracy przed uzyskaniem dyplomu
+**Definitions:**
+- `P_WWB_DOSW` — Unemployment rate among graduates with prior work experience
+- `P_WWB_NDOSW` — Unemployment rate among graduates without prior work experience
+- `P_CZAS_PRACA_DOSW` — Average time (in months) to first job for graduates with prior work experience
+- `P_CZAS_PRACA_NDOSW` — Average time (in months) to first job for graduates without prior work experience
+- `P_ME_ZAR_DOSW` — Median monthly salary for graduates with prior work experience
+- `P_ME_ZAR_NDOSW` — Median monthly salary for graduates without prior work experience
 
-    **P_WWB_NDOSW** - Względny Wskaźnik Bezrobocia absolwentów po uzyskaniu dyplomu wśród absolwentów bez doświadczenia pracy przed uzyskaniem dyplomu
+#### Additionally:
+- **f(Years 1–5) = (P_WWZ_DOSW_PX and P_WWZ_NDOSW_PX) and (P_ME_ZAR_DOSW_PX and P_ME_ZAR_NDOSW_PX)**
 
-    **P_CZAS_PRACA_DOSW** - Średni czas (w miesiącach) od uzyskania dyplomu do podjęcia pierwszej pracy po uzyskaniu dyplomu wśród absolwentów z doświadczeniem pracy przed uzyskaniem dyplomu
+**Definitions:**
+- `P_ME_ZAR_DOSW_PX` — Median monthly salary in year X after graduation for graduates with prior work experience
+- `P_ME_ZAR_NDOSW_PX` — Median monthly salary in year X after graduation for graduates without prior work experience
 
-     **P_CZAS_PRACA_NDOSW** - Średni czas (w miesiącach) od uzyskania dyplomu do podjęcia pierwszej pracy po uzyskaniu dyplomu wśród absolwentów bez doświadczenia pracy przed uzyskaniem dyplomu
+---
 
-    **P_ME_ZAR_DOSW** - Mediana średnich miesięcznych wynagrodzeń ze wszystkich źródeł po uzyskaniu dyplomu absolwentów wśród absolwentów z doświadczeniem pracy przed uzyskaniem dyplomu
+### 3. Histogram: Number of Students vs Salaries (done in different notebook)
+- **f(P_N) = P_ME_ZAR**
 
-     **P_ME_ZAR_NDOSW** - Mediana średnich miesięcznych wynagrodzeń ze wszystkich źródeł po uzyskaniu dyplomu absolwentów wśród absolwentów bez doświadczenia pracy przed uzyskaniem dyplomu
+**Definitions:**
+- `P_N` — Number of students (from `students-major-data.csv`)
+- `P_ME_ZAR` — Median monthly salary of graduates after graduation
 
-    ### Dodatkowo 
-     **f(Lata 1-5) = (P_WWZ_DOSW_PX i P_WWZ_NDOSW_PX) i (P_ME_ZAR_DOSW_PX i P_ME_ZAR_NDOSW_PX)**
+---
 
-     **P_ME_ZAR_DOSW** - Mediana średnich miesięcznych wynagrodzeń ze wszystkich źródeł po uzyskaniu dyplomu absolwentów wśród absolwentów z doświadczeniem pracy przed uzyskaniem dyplomu
+### 4. Education Level vs Salaries
+- **f(P_POZIOM) = (P_ME_ZAR or P_WWZ)**
 
-     **P_ME_ZAR_NDOSW** - Mediana średnich miesięcznych wynagrodzeń ze wszystkich źródeł po uzyskaniu dyplomu absolwentów wśród absolwentów bez doświadczenia pracy przed uzyskaniem dyplomu
+**Definitions:**
+- `P_POZIOM` — Level of education completed
+- `P_WWZ` — Relative Salary Index
+- `P_ME_ZAR` — Median monthly salary
 
-     **P_ME_ZAR_DOSW_PX** - Mediana średnich miesięcznych wynagrodzeń ze wszystkich źródeł w X roku po uzyskaniu dyplomu absolwentów wśród absolwentów z doświadczeniem pracy przed uzyskaniem dyplomu
+---
 
-     **P_ME_ZAR_NDOSW_PX** - Mediana średnich miesięcznych wynagrodzeń ze wszystkich źródeł w X roku po uzyskaniu dyplomu absolwentów wśród absolwentów bez doświadczenia pracy przed uzyskaniem dyplomu
+### 5. Study Mode vs Salaries
+- **f(P_FORMA) = (P_ME_ZAR or P_WWZ)**
 
-3. **Histogram - f(P_N) = P_ME_ZAR**
+**Definitions:**
+- `P_FORMA` — Study mode (full-time or part-time)
+- `P_WWZ` — Relative Salary Index
+- `P_ME_ZAR` — Median monthly salary
 
-    **P_N** - Liczba studentów (z tabeli students-major-data.csv)
+---
 
-    **P_ME_ZAR** - Mediana średnich miesięcznych wynagrodzeń absolwentów ze wszystkich źródeł po uzyskaniu dyplomu
+## Additional Charts
 
-4. **f(P_POZIOM) = (P_ME_ZAR lub P_WWZ)**
+### 1. Changes in Salaries and Unemployment over Time (up to 5 years after graduation)
+- **f(Months X 1–60) = P_WWZ_MIES_X and P_WWB_MIES_X**
 
-    **P_POZIOM** - Stopień ukończonych studiów
+**Definitions:**
+- `P_WWZ_MIES_X` — Relative Salary Index in the Xth month after graduation
+- `P_WWB_MIES_X` — Relative Unemployment Index in the Xth month after graduation
 
-    **P_WWZ** - Względny Wskaźnik Zarobków absolwentów po uzyskaniu dyplomu
+---
 
-    **P_ME_ZAR** - Mediana średnich miesięcznych wynagrodzeń absolwentów ze wszystkich źródeł po uzyskaniu dyplomu
-
-5. **f(P_FORMA) = (P_ME_ZAR lub P_WWZ)**
-
-    **P_FORMA** - Forma ukończonych studiów
-
-    **P_WWZ** - Względny Wskaźnik Zarobków absolwentów po uzyskaniu dyplomu
-
-    **P_ME_ZAR** - Mediana średnich miesięcznych wynagrodzeń absolwentów ze wszystkich źródeł po uzyskaniu dyplomu
-
-## Dodatkowe wykresy
-1. **f(Miesiące X 1-60) = P_WWZ_MIES_X i P_WWB_MIES_X**
-
-    **P_WWZ_MIES_X** - Względny Wskaźnik Zarobków w X. miesiącu po uzyskaniu dyplomu
-
-    **P_WWB_MIES_X** - Względny Wskaźnik Bezrobocia w X. miesiącu po uzyskaniu dyplomu
+## Poster
+![obraz](https://github.com/user-attachments/assets/6013133f-9303-4035-bac4-c496ffb32119)
